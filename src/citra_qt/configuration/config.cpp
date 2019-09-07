@@ -238,6 +238,7 @@ void Config::ReadUtilityValues() {
     Settings::values.dump_textures = ReadSetting("dump_textures", false).toBool();
     Settings::values.custom_textures = ReadSetting("custom_textures", false).toBool();
     Settings::values.preload_textures = ReadSetting("preload_textures", false).toBool();
+    Settings::values.use_disk_shader_cache = ReadSetting("use_disk_shader_cache", false).toBool();
 
     qt_config->endGroup();
 }
@@ -711,6 +712,7 @@ void Config::SaveUtilityValues() {
     WriteSetting("dump_textures", Settings::values.dump_textures, false);
     WriteSetting("custom_textures", Settings::values.custom_textures, false);
     WriteSetting("preload_textures", Settings::values.preload_textures, false);
+    WriteSetting("use_disk_shader_cache", Settings::values.use_disk_shader_cache, false);
 
     qt_config->endGroup();
 }
