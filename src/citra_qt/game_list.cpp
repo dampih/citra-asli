@@ -426,6 +426,8 @@ void GameList::DonePopulating(QStringList watch_list) {
     if (children_total > 0) {
         search_field->setFocus();
     }
+    item_model->sort(tree_view->header()->sortIndicatorSection(),
+                     tree_view->header()->sortIndicatorOrder());
 
     emit PopulatingCompleted();
 }
@@ -675,8 +677,6 @@ void GameList::LoadInterfaceLayout() {
         // so make it as large as possible as default.
         header->resizeSection(COLUMN_NAME, header->width());
     }
-
-    item_model->sort(header->sortIndicatorSection(), header->sortIndicatorOrder());
 }
 
 const QStringList GameList::supported_file_extensions = {
