@@ -239,6 +239,7 @@ void Config::ReadUtilityValues() {
     Settings::values.dump_textures = ReadSetting("dump_textures", false).toBool();
     Settings::values.custom_textures = ReadSetting("custom_textures", false).toBool();
     Settings::values.preload_textures = ReadSetting("preload_textures", false).toBool();
+    Settings::values.use_disk_shader_cache = ReadSetting("use_disk_shader_cache", true).toBool();
 
     qt_config->endGroup();
 }
@@ -432,7 +433,6 @@ void Config::ReadRendererValues() {
     Settings::values.use_shader_jit = ReadSetting(QStringLiteral("use_shader_jit"), true).toBool();
     Settings::values.resolution_factor =
         static_cast<u16>(ReadSetting(QStringLiteral("resolution_factor"), 1).toInt());
-    Settings::values.vsync_enabled = ReadSetting(QStringLiteral("vsync_enabled"), false).toBool();
     Settings::values.use_frame_limit =
         ReadSetting(QStringLiteral("use_frame_limit"), true).toBool();
     Settings::values.frame_limit = ReadSetting(QStringLiteral("frame_limit"), 100).toInt();
@@ -713,6 +713,7 @@ void Config::SaveUtilityValues() {
     WriteSetting("dump_textures", Settings::values.dump_textures, false);
     WriteSetting("custom_textures", Settings::values.custom_textures, false);
     WriteSetting("preload_textures", Settings::values.preload_textures, false);
+    WriteSetting("use_disk_shader_cache", Settings::values.use_disk_shader_cache, true);
 
     qt_config->endGroup();
 }
@@ -860,7 +861,6 @@ void Config::SaveRendererValues() {
                  false);
     WriteSetting(QStringLiteral("use_shader_jit"), Settings::values.use_shader_jit, true);
     WriteSetting(QStringLiteral("resolution_factor"), Settings::values.resolution_factor, 1);
-    WriteSetting(QStringLiteral("vsync_enabled"), Settings::values.vsync_enabled, false);
     WriteSetting(QStringLiteral("use_frame_limit"), Settings::values.use_frame_limit, true);
     WriteSetting(QStringLiteral("frame_limit"), Settings::values.frame_limit, 100);
 
